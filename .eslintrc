@@ -14,5 +14,5 @@
     "process": true,
     "module": true
   },
-  "extends": "standard"
+  "extends": "airbnb"
 }

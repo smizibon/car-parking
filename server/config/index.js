@@ -1,4 +1,4 @@
 module.exports = {
-  SERVER_NAME: 'simpleNodeServer',
-  DEFAULT_PORT: 8282
+  SERVER_NAME: "simpleNodeServer",
+  DEFAULT_PORT: 3000
 };
