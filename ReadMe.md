@@ -1,127 +1,38 @@
-### Simple Node Server
-
-A simple enough node server scaffolding to get you started on your project immediately
+This project was build using this boilerplate : https://github.com/dibosh/simple-node-server
 
 
-#### Features
+To start this project on a windows PC simply download the project then :
+- npm install 
+- npm start  
 
-- Don't worry about the boilerplate anymore, jump right into writing your API
-resources
-
-- Serve your frontend easily by providing the absolute path
-
-- Have error handling and graceful shutdown support out of the box
-
-- Structure your code in more maintainable and industry standard way
+If you are not using a windows machine then :
+- npm install
+- node index.js 
 
 
-#### Running the Project
-
-- `npm install`
-
-- This starts the server in port `8282`: `npm start`
-
-- To run in different port: `PORT=8000 npm start`
-
-#### Serving a Client/Frontend 
-
-- If your client app has following structure
-
-``` 
-client/
-| - index.html
-| - resources/ <-- or may be static/ or dist/
-```
-
-then this can easily be served using 
-
-```
-CLIENT_DIR=<absolute path of your client app folder> npm start
-```
-
-- If your `index.html` file is at one place and folder with static files in another, then
-the following might be your option-
-
-```
-INDEX=<absolute path of index.html> STATIC_DIR=<absolute path of static folder> npm start
-```
+Description : 
+Is is a car Parking system . it has  dedicated space for car parking and it has different lots; every lot has certain number of empty parking slots. someone sits at the main entrance of all these lots; which is called the control tower. From control tower we actually find out which parking lot has empty slot and assign the nearest parking lot to a car. When the car is going out, we also charge the car based on the time it was parked there for. For every first 3 hours, you charge a constant amount of 20BDT. But for every other consecutive hour we charge another 5BDT. the API does the fowwing tasks : 
 
 
-#### The Structure
-
-``` 
-index.js <-- entry point for node
-server <-- root folder for all functionalities
-| - core <-- all the core functionalities belong here 
-  | - shutdownManager.js 
-  | - bootstrapper.js
-  | - ...
-  
-| - config <-- all server specific config resides here
-  | - index.js
-  
-| - api <-- all the api resources belong here
-  | - index.js <-- any new api resource is registered here
-  
-  | - <resource>
-    | - route.js <-- specific routing for this resource e.g. /user/all, /user/auth etc.
-    | - controller.js <-- controller for this resource, business and db access logics should
-    reside here. Feel free to split up db access layer into a repository if you want
-    | - repository.js <-- if you separate out db access codes from controller.js
-    | - model.js <-- if this resource needs a model schema to be specified
-    | - index.js <-- entry point for model, controller, repository and route for this resource
-    | - test
-      | - <type>.test.js <-- tests for this resource; type can be model, repository, controller
-      etc. For each there should be one separate test file
-      
-| - testHelpers <-- test specific helpers, shared mocks, global vars should be here
-  | - ...    
-```
-
-#### Exposing a new API Resource
-
-- Create the resource folder under `server/api` (e.g. `user`)
-
-- Create `route.js`, this will have routing definitions for all the endpoints 
-under this resource (e.g. `user/all`, `user/2/profile`)
-
-- Create `controller.js`; theoretically this is where you should put business and db
-access logic for your resource
-
-- You can separate out your db access logic from controller and put them in a separate
-file called `repository.js`; controller will use it to get/manipulate db records
-
-- Optionally you can have a `model.js`; which refers to the model required for this
-resource
-
-- Create an index file and register all these under the `index.js`
-
-``` 
-module.exports = {
-  route: ...
-  controller: ...
-  model: ...
-  repository: ...
-};
-```
-
-- Finally register your api to the base api routing at `server/api/index.js`
-
-``` 
-const yourResource = require('./yourResource');
-
-...
-router.use('/yourResource', yourResource.route);
-
-module.exports = router;
-```
-
-- To know more, please take a look at the given sample api resource `user`
+MongoDB Model : 
+![Loading MongoDB Model Screenshot ........ ](https://github.com/smizibon/car-parking/blob/master/model.PNG "MongoDB Model")
 
 
-#### Other Important Commands
+Test Out the API : 
 
-- To run tests: `npm run test`
+1 - Make a post request to the API at : http://localhost:3000/api/lot with body of JSon that contatains the Capacity of the lot 
+![Loading Creating a Lot Screenshot........ ](https://github.com/smizibon/car-parking/blob/master/car%20parking%20%20API/1.%20create%20a%20parking%20lot.PNG "Creating a lot")
 
-- To check for lint errors: `npm run lint`
+2 . To park a Car in the nearest spot we only need to send a Post request of the car serial number @ http://localhost:3000/api/slot/park . 
+![Loading Parking a car Screenshot........ ](https://github.com/smizibon/car-parking/blob/master/car%20parking%20%20API/2%20.%20park%20a%20car%20in%20slot.PNG "Parking a Vehicle|| car")
 
+
+3 . We can check how much is bill of a car is its lisence number The response number is to be valued as BDT. TO get it we send a get request @ http://localhost:3000/api/slot/billByLicense with params  license_no : 
+![Loading Get bill by lisence number Screenshot........ ](https://github.com/smizibon/car-parking/blob/master/car%20parking%20%20API/3%20.%20get%20bill%20by%20lisence%20number.PNG "Bill By Lisence Number")
+
+4 . We can check the bill by the slot and lot no as well . The response number is to be valued as BDT . To get the bill by slot and lot no we send a get request to http://localhost:3000/api/slot/billBySlotLot with params slot_no and lot_no . 
+![Loading Bill by Slot and Lot no Screenshot........ ](https://github.com/smizibon/car-parking/blob/master/car%20parking%20%20API/4%20get%20bill%20by%20slot%20and%20Lot.PNG "Bill by Slot and Lot no")
+
+
+5 When we unpark a car it will provide us with the  final bill . To unpark a car We need to send a post request with the lisence_no of the car to http://localhost:3000/api/slot/unpark . 
+![Loading Unpark a car Screenshot ........ ](https://github.com/smizibon/car-parking/blob/master/car%20parking%20%20API/5%20unpark%20a%20car.PNG "Unpark a car")
