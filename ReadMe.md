@@ -15,6 +15,7 @@ It is a Car Parking system . It has  dedicated space for car parking and it has 
 
 
 MongoDB Model : 
+
 ![Loading MongoDB Model Screenshot ........ ](https://github.com/smizibon/car-parking/blob/master/model.PNG "MongoDB Model")
 
 
