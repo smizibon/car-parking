@@ -11,7 +11,7 @@ If you are not using a windows machine then :
 
 
 Description : 
-It is a Car Parking system . It has  dedicated space for car parking and it has different lots; every lot has certain number of empty parking slots. Someone sits at the main entrance of all these lots; which is called the control tower. From control tower we actually find out which parking lot has empty slot and assign the nearest parking lot to a car. When the car is going out, We also charge the car based on the time it was parked there for. For every first 3 hours, you charge a constant amount of 20BDT. But for every other consecutive hour we charge another 5BDT. The API does the fowwing tasks : 
+It is a Car Parking system . It has  dedicated space for car parking and it has different lots; every lot has certain number of empty parking slots. Someone sits at the main entrance of all these lots; which is called the control tower. From control tower we actually find out which parking lot has empty slot and assign the nearest parking lot to a car. When the car is going out, We also charge the car based on the time it was parked there for. For every first 3 hours, you charge a constant amount of 20BDT. But for every other consecutive hour we charge another 5BDT. 
 
 
 MongoDB Model : 
