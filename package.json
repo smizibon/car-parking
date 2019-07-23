@@ -8,6 +8,7 @@
   },
   "scripts": {
     "start": "cross-env DEBUG=simpleNodeServer nodemon index.js",
+    "docs": "./node_modules/.bin/jsdoc -c jsdoc.json",
     "test": "mocha -r server/testHelpers/globals.js server/**/*.test.js",
     "lint": "eslint server/"
   },
@@ -42,6 +43,7 @@
     "eslint-plugin-node": "^8.0.0",
     "eslint-plugin-promise": "^4.0.1",
     "eslint-plugin-standard": "^4.0.0",
+    "jsdoc": "^3.6.3",
     "mocha": "^5.2.0",
     "nodemon": "^1.19.1"
   }

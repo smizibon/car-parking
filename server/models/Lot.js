@@ -17,11 +17,10 @@ const LotSchema = new Schema({
     required: true
   }
 });
-
+//auto increment  lot_id
 LotSchema.pre("validate", function(next) {
   var doc = this;
   doc.createdAt = new Date();
-  console.log("calling.................");
   Lot.findOne({}, null, { sort: { createdAt: -1 } }, function(error, latest) {
     if (error) return next(error);
     if (!latest) {

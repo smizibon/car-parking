@@ -3,7 +3,6 @@ const Slot = require("../../models/Slot");
 
 async function createLot(req, res, next) {
   try {
-    console.log(req.body);
     const capacity = req.body.capacity;
     const lot = new Lot({
       capacity
@@ -20,7 +19,7 @@ async function createLot(req, res, next) {
         is_empty: true
       });
     }
-    await Slot.insertMany(slots); //  adding slots behind the scene
+    await Slot.insertMany(slots); //  adding slots to database behind the scenes
 
     return res.status(200).json({
       result

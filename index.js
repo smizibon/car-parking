@@ -34,11 +34,10 @@ let server = app.listen(port, function() {
 mongoose.connect("mongodb://localhost:27017/parking", {
   useNewUrlParser: true
 });
-
 var db = mongoose.connection;
 db.on("error", console.error.bind(console, "connection error:"));
 db.on("connected", function() {
-  console.log("connected db");
+  console.log("connected to MongoDB");
 });
 
 // Manage graceful shutdown and proper logging

@@ -14,8 +14,6 @@ async function calculateByLicense(req, res, next) {
 
     return res.status(200).json({
       result: bill
-      // nearest,
-      // updated
     });
   } catch (e) {
     console.log(e);
@@ -24,12 +22,9 @@ async function calculateByLicense(req, res, next) {
 }
 async function calculateBySlotLot(req, res, next) {
   try {
-    // const license = req.body.licence_no;
-    // Calculate.calculateFair;
     const slot = req.query.slot_no;
     const lot = req.query.lot_id;
 
-    // console.log(license);
     const currentSlot = await Slot.findOne({ slot_no: slot, lot_id: lot });
     if (!currentSlot)
       throw new Error(`There are no cars parked in this ${slot} of ${lot}`);
@@ -40,8 +35,6 @@ async function calculateBySlotLot(req, res, next) {
 
     return res.status(200).json({
       result: bill
-      // nearest,
-      // updated
     });
   } catch (e) {
     console.log(e);
@@ -76,28 +69,20 @@ async function parkVehicle(req, res, next) {
     next(e);
   }
 }
+
 async function unparkVehicle(req, res, next) {
   try {
     const license = req.body.license_no;
-    // console.log(license);
     const slot = await Slot.findOne({ licence_no: license });
     if (!slot) throw new Error("There are no cars parked by this license");
-    // console.log(slot);
-
     const bill = Calculate.calculateFair(slot.entry);
-
-    // const bill2 = Calculate.calculateFair()
-
     const result = await Slot.findOneAndUpdate(
       { _id: slot._id },
       { is_empty: true, licence_no: null, entry: null },
-      { new: true } //*** */
+      { new: true } //**if we dont write this we wont be able to store the updated result* */
     );
     return res.status(200).json({
       result: bill
-
-      // nearest,
-      // updated
     });
   } catch (e) {
     console.log(e);
