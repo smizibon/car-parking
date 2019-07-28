@@ -21,14 +21,14 @@ MongoDB Model :
 
 Test Out the API : 
 
-1 .  Make a post request to the API at : http://localhost:3000/api/lot with body of JSon that contatains the Capacity of the lot 
+1 .  Make a post request to the API at : http://localhost:3000/api/lot with body of JSon that contains the Capacity of the lot 
 ![Loading Creating a Lot Screenshot........ ](https://github.com/smizibon/car-parking/blob/master/car%20parking%20%20API/1.%20create%20a%20parking%20lot.PNG "Creating a lot")
 
 2 . To park a Car in the nearest spot we only need to send a Post request of the car serial number @ http://localhost:3000/api/slot/park . 
 ![Loading Parking a car Screenshot........ ](https://github.com/smizibon/car-parking/blob/master/car%20parking%20%20API/2%20.%20park%20a%20car%20in%20slot.PNG "Parking a Vehicle|| car")
 
 
-3 . We can check how much is bill of a car is its lisence number The response number is to be valued as BDT. To get it we send a get request @ http://localhost:3000/api/slot/billByLicense with params  license_no : 
+3 . We can check how much is the bill of a car by its lisence number ,The response number is to be valued as BDT. To get it we send a Get request @ http://localhost:3000/api/slot/billByLicense with params  license_no : 
 ![Loading Get bill by lisence number Screenshot........ ](https://github.com/smizibon/car-parking/blob/master/car%20parking%20%20API/3%20.%20get%20bill%20by%20lisence%20number.PNG "Bill By Lisence number")
 
 4 . We can check the bill by the slot and lot no as well . The response number is to be valued as BDT . To get the bill by slot and lot no we send a get request to http://localhost:3000/api/slot/billBySlotLot with params slot_no and lot_no . 
